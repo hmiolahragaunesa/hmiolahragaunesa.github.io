@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMI Komisariat Olahraga UNESA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a5f3f;
+            --secondary: #2d8659;
+            --accent: #ffd700;
+            --dark: #0d3b26;
+            --light: #f5f5f5;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .logo-circle {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,215,0,0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* About */
+        .about {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Programs */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .program-body {
+            padding: 25px;
+        }
+
+        .program-body h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Structure */
+        .structure {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        }
+
+        .struct-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .struct-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+            min-width: 250px;
+        }
+
+        .struct-level {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .struct-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        .struct-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* News/Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .event-day {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .event-body {
+            padding: 20px;
+        }
+
+        .event-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery */
+        .gallery {
+            background: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            align-items: start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-circle">🟢</div>
+                <span>HMI Olahraga UNESA</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#programs">Program</a></li>
+                <li><a href="#structure">Struktur</a></li>
+                <li><a href="#events">Kegiatan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-logo">🟢</div>
+            <h1>Himpunan Mahasiswa Islam</h1>
+            <p class="subtitle">Komisariat Olahraga<br>Universitas Negeri Surabaya</p>
+            <div>
+                <a href="#about" class="btn">Tentang Kami</a>
+                <a href="#contact" class="btn btn-outline">Bergabung</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">186</div>
+                    <div class="stat-label">Postingan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.055</div>
+                    <div class="stat-label">Pengikut</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2018</div>
+                    <div class="stat-label">Berdiri</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            <p class="section-subtitle">Mengenal Lebih Dekat HMI Komisariat Olahraga UNESA</p>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Siapa Kami?</h3>
+                    <p>HMI Komisariat Olahraga UNESA adalah organisasi mahasiswa Islam yang berfokus di Fakultas Ilmu Olahraga Universitas Negeri Surabaya. Kami berkomitmen membentuk mahasiswa yang berakhlak, berintelektual, dan berprestasi.</p>
+                    <p>Sebagai bagian dari Himpunan Mahasiswa Islam Indonesia, kami menjunjung tinggi nilai-nilai keislaman, keilmuan, dan keolahragaan sebagai pondasi dalam setiap kegiatan.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">🕌</div>
+                            <strong>Keislaman</strong>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">📚</div>
+                            <strong>Keilmuan</strong>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">⚽</div>
+                            <strong>Keolahragaan</strong>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🤝</div>
+                            <strong>Ukhuwah</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>Visi</h3>
+                    <p>Terbinanya insan akademis, pencipta, pengabdi yang bernafaskan Islam dan bertanggung jawab atas terwujudnya masyarakat adil makmur yang diridhoi Allah SWT.</p>
+                    
+                    <h3>Misi</h3>
+                    <p>✓ Membentuk kader-kader yang memiliki integritas kepribadian muslim<br>
+                    ✓ Mengembangkan potensi intelektual dan keolahragaan<br>
+                    ✓ Membangun ukhuwah islamiyah antar mahasiswa<br>
+                    ✓ Berkontribusi dalam pengembangan olahraga di Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="section" id="programs">
+        <div class="container">
+            <h2 class="section-title">Program Kerja</h2>
+            <p class="section-subtitle">Kegiatan unggulan yang rutin kami laksanakan</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">🎓</div>
+                    <div class="program-body">
+                        <h3>LK 1 (Basic Training)</h3>
+                        <p>Pelatihan dasar untuk calon anggota HMI sebagai pintu masuk kaderisasi menuju pribadi muslim yang tangguh.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">📊</div>
+                    <div class="program-body">
+                        <h3>RAK IV</h3>
+                        <p>Rapat Anggota Komisariat sebagai forum tertinggi untuk evaluasi dan penyusunan program kerja.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">🏃</div>
+                    <div class="program-body">
+                        <h3>Follow Up</h3>
+                        <p>Kegiatan pembinaan lanjutan bagi anggota untuk memperdalam wawasan keislaman dan keorganisasian.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">⚽</div>
+                    <div class="program-body">
+                        <h3>Turnamen Olahraga</h3>
+                        <p>Event olahraga rutin untuk mempererat silaturahmi dan menyalurkan bakat atletik anggota.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">📖</div>
+                    <div class="program-body">
+                        <h3>Kajian Rutin</h3>
+                        <p>Diskusi dan kajian keislaman mingguan untuk meningkatkan pemahaman agama dan intelektual.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">👕</div>
+                    <div class="program-body">
+                        <h3>Merchandise</h3>
+                        <p>Produksi T-Shirt dan atribut resmi HMI Komisariat Olahraga UNESA untuk anggota dan simpatisan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure -->
+    <section class="section structure" id="structure">
+        <div class="container">
+            <h2 class="section-title">Struktur Organisasi</h2>
+            <p class="section-subtitle">Kepengurusan HMI Komisariat Olahraga UNESA</p>
+            <div class="struct-tree">
+                <div class="struct-box">
+                    <div class="struct-level">Ketua Umum</div>
+                    <div class="struct-name">Ketua Komisariat</div>
+                </div>
+                <div class="struct-row">
+                    <div class="struct-box">
+                        <div class="struct-level">Sekretaris</div>
+                        <div class="struct-name">Sekretaris Umum</div>
+                    </div>
+                    <div class="struct-box">
+                        <div class="struct-level">Bendahara</div>
+                        <div class="struct-name">Bendahara Umum</div>
+                    </div>
+                </div>
+                <div class="struct-row">
+                    <div class="struct-box">
+                        <div class="struct-level">Bidang</div>
+                        <div class="struct-name">PTKP</div>
+                    </div>
+                    <div class="struct-box">
+                        <div class="struct-level">Bidang</div>
+                        <div class="struct-name">PPPA</div>
+                    </div>
+                    <div class="struct-box">
+                        <div class="struct-level">Bidang</div>
+                        <div class="struct-name">KPP</div>
+                    </div>
+                    <div class="struct-box">
+                        <div class="struct-level">Bidang</div>
+                        <div class="struct-name">KWU</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events -->
+    <section class="section" id="events">
+        <div class="container">
+            <h2 class="section-title">Kegiatan Terbaru</h2>
+            <p class="section-subtitle">Update aktivitas terkini HMI Olahraga UNESA</p>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div>Januari 2025</div>
+                    </div>
+                    <div class="event-body">
+                        <span class="event-tag">KADERISASI</span>
+                        <h3>LK 1 Batch XII</h3>
+                        <p>Pelaksanaan Latihan Kader 1 untuk calon anggota baru HMI Komisariat Olahraga UNESA.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">22</div>
+                        <div>Januari 2025</div>
+                    </div>
+                    <div class="event-body">
+                        <span class="event-tag">OLAHRAGA</span>
+                        <h3>Turnamen Futsal</h3>
+                        <p>Kompetisi futsal antar kader dalam rangka memperingati Milad HMI ke-78.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">05</div>
+                        <div>Februari 2025</div>
+                    </div>
+                    <div class="event-body">
+                        <span class="event-tag">KAJIAN</span>
+                        <h3>Seminar Nasional</h3>
+                        <p>Diskusi dan kajian tentang peran pemuda Islam dalam pembangunan bangsa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery">
+        <div class="container">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <p class="section-subtitle">Dokumentasi aktivitas kami</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">📸</div>
+                <div class="gallery-item">🏆</div>
+                <div class="gallery-item">🎯</div>
+                <div class="gallery-item">⚽</div>
+                <div class="gallery-item">📚</div>
+                <div class="gallery-item">🤝</div>
+                <div class="gallery-item">🕌</div>
+                <div class="gallery-item">🎓</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Mari bergabung bersama kami</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Alamat</strong><br>
+                            Universitas Negeri Surabaya<br>
+                            Kampus Lidah Wetan, Surabaya
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            hmiolahragaunesa@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Instagram</strong><br>
+                            @hmiolahragaunesa
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div>
+                            <strong>Linktree</strong><br>
+                            linktr.ee/hmiolahragaunesa
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subjek" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>HMI Komisariat Olahraga UNESA</h3>
+            <p>Yakin Usaha Sampai</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="YouTube">📺</a>
+                <a href="#" title="WhatsApp">💬</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 HMI Komisariat Olahraga UNESA. All Rights Reserved.</p>
+                <p style="margin-top: 5px; font-size: 0.9rem;">Billahittaufiq Wal Hidayah</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera merespons.');
+            e.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
