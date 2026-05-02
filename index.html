@@ -204,8 +204,9 @@
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            box-sizing: border-box;
         }
 
         .section-title {
@@ -228,10 +229,10 @@
         }
 
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         .about-content h3 {
@@ -246,10 +247,10 @@
         }
 
         .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+            display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         .value-card {
@@ -267,9 +268,10 @@
 
         /* Programs */
         .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         .program-card {
@@ -338,16 +340,17 @@
 
         .struct-row {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         /* News/Events */
         .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         .event-card {
@@ -423,10 +426,10 @@
         }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-top: 40px;
+            display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
         }
 
         .contact-info {
