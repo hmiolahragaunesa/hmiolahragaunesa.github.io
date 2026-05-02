@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HMI Komisariat Olahraga UNESA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,76 +24,61 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: #fff;
-        }
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: #fff;
+}
 
-        /* Navbar */
-        .navbar {
-    background: linear-gradient(90deg, #0d3b26, #1a5f3f);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+h1, h2, h3, .logo, .section-title, .stat-number, .btn {
+    font-family: 'Montserrat', sans-serif;
+}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+.nav-menu a {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-        .logo-circle {
-            width: 45px;
-            height: 45px;
-            background: transparent;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+}
 
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
+.hero .subtitle {
+    font-size: 20px;
+}
 
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+.section-title {
+    font-size: 36px;
+    font-weight: 800;
+}
 
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
+.section-subtitle {
+    font-size: 18px;
+}
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+.program-body h3,
+.event-body h3,
+.about-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.stat-number {
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.stat-label {
+    font-size: 13px;
+}
 
         /* Hero Section */
         .hero {
@@ -527,43 +515,32 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
+    .hero h1 {
+        font-size: 32px;
+    }
 
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-            }
+    .hero .subtitle {
+        font-size: 16px;
+    }
 
-            .nav-menu.active {
-                display: flex;
-            }
+    .section-title {
+        font-size: 28px;
+    }
 
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+    .section-subtitle {
+        font-size: 16px;
+    }
 
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+    .program-body h3,
+    .event-body h3,
+    .about-content h3 {
+        font-size: 20px;
+    }
 
-            .hero-stats {
-                gap: 20px;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-            }
-        }
+    .stat-number {
+        font-size: 30px;
+    }
+}
     </style>
 </head>
 <body>
@@ -666,45 +643,57 @@
             <p class="section-subtitle">Kegiatan unggulan yang rutin kami laksanakan</p>
             <div class="programs-grid">
                 <div class="program-card">
-                    <div class="program-header">🎓</div>
+                    <div class="program-header">
+  <img src="lk1.jpg" alt="LK 1 (Basic Training)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>LK 1 (Basic Training)</h3>
-                        <p>Pelatihan dasar untuk calon anggota HMI sebagai pintu masuk kaderisasi menuju pribadi muslim yang tangguh.</p>
+                        <p>COMING SOON Pelatihan dasar untuk calon anggota HMI sebagai pintu masuk kaderisasi menuju pribadi muslim yang tangguh.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <div class="program-header">📊</div>
+                    <div class="program-header">
+  <img src="rak.jpg" alt="RAK IV" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>RAK IV</h3>
                         <p>Rapat Anggota Komisariat sebagai forum tertinggi untuk evaluasi dan penyusunan program kerja.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <div class="program-header">🏃</div>
+                    <div class="program-header">
+  <img src="follow-up.jpg" alt="Follow Up" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>Follow Up</h3>
                         <p>Kegiatan pembinaan lanjutan bagi anggota untuk memperdalam wawasan keislaman dan keorganisasian.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <div class="program-header">⚽</div>
+                    <div class="program-header">
+  <img src="turnamen.jpg" alt="Turnamen Olahraga" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>Turnamen Olahraga</h3>
                         <p>Event olahraga rutin untuk mempererat silaturahmi dan menyalurkan bakat atletik anggota.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <div class="program-header">📖</div>
+                    <div class="program-header">
+  <img src="kajian.jpg" alt="Kajian Rutin" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>Kajian Rutin</h3>
                         <p>Diskusi dan kajian keislaman mingguan untuk meningkatkan pemahaman agama dan intelektual.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <div class="program-header">👕</div>
+                    <div class="program-header">
+  <img src="merchandise.jpg" alt="Merchandise" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+</div>
                     <div class="program-body">
                         <h3>Merchandise</h3>
-                        <p>Produksi T-Shirt dan atribut resmi HMI Komisariat Olahraga UNESA untuk anggota dan simpatisan.</p>
+                        <p>COMING SOON Produksi T-Shirt dan atribut resmi HMI Komisariat Olahraga UNESA untuk anggota dan simpatisan.</p>
                     </div>
                 </div>
             </div>
